@@ -58,6 +58,7 @@ def createParser():
     parser.add_option('', '--multiClusterTag',  action='store', dest='MULTICLUSTAG', default="hgcalMultiClusters", help='name of HGCalMultiCluster InputTag - use hgcalLayerClusters before CMSSW_10_3_X')
     parser.add_option('', '--keepDQMfile',  action='store_true', dest='DQM',  default=False, help='store the DQM file in relevant folder locally or in EOS, default is False.')
     parser.add_option('', '--skipInputs', action='store_true', dest='skipInputs', default=False, help='skip interpolating input files from the previous step')
+    parser.add_option('', '--pileup', dest='pileup', type=int, default=0, help='pileup to simulate')
     return parser
 
 
@@ -369,6 +370,7 @@ def submitHGCalProduction(*args, **kwargs):
             s_template=s_template.replace('DUMMYETAMAX',str(opt.etaMax))
             s_template=s_template.replace('GUNPRODUCERTYPE',str(partGunType))
             s_template=s_template.replace('GUNMODE',str(opt.gunMode))
+            s_template=s_template.replace('DUMMYPU',str(opt.pileup))
 
             if opt.gunMode != 'physproc':
                 s_template=s_template.replace('MAXTHRESHSTRING',"Max"+str(opt.gunType))
