@@ -15,11 +15,11 @@ options.parseArguments()
 
 process.maxEvents.input = cms.untracked.int32(options.maxEvents)
 
-# append the HGCTruthProducer to the recosim step
-process.hgcTruthProducer = cms.EDProducer("HGCTruthProducer",
-    # options
-)
-process.recosim_step += process.hgcTruthProducer
+### append the HGCTruthProducer to the recosim step
+##process.hgcTruthProducer = cms.EDProducer("HGCTruthProducer",
+##    # options
+##)
+##process.recosim_step += process.hgcTruthProducer
 
 # Input source
 process.source.fileNames = cms.untracked.vstring(options.inputFiles)
@@ -27,7 +27,7 @@ process.source.fileNames = cms.untracked.vstring(options.inputFiles)
 # Output definition
 process.FEVTDEBUGHLToutput.fileName = cms.untracked.string(
     options.__getattr__("outputFile", noTags=True))
-process.FEVTDEBUGHLToutput.outputCommands.append("keep *_HGCTruthProducer_*_*")
+##process.FEVTDEBUGHLToutput.outputCommands.append("keep *_HGCTruthProducer_*_*")
 process.DQMoutput.fileName = cms.untracked.string(options.outputFileDQM)
 
 # Customisation from command line
